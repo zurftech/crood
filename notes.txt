@@ -1,0 +1,7 @@
+AppName=testappname
+Version=1.0.4-1644310318
+DockerRepoUrl=952679535946.dkr.ecr.ap-southeast-1.amazonaws.com/testappname
+DockerImageUrl=952679535946.dkr.ecr.ap-southeast-1.amazonaws.com/testappname:1.0.4-1644065604
+HelmRrepoUrl=https://charts.liberty.captainfresh.in/captainfresh/stable
+HelmChartName=testappname
+HelmChartVersion=1.0.4-1644310318

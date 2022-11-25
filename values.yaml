@@ -1,0 +1,5 @@
+image:
+  repository: +( .ImageRepository )
+  pullPolicy: +( .TestEmpty )
+  # Overrides the image tag whose default is the chart appVersion.
+  # tag: "v1"
