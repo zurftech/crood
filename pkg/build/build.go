@@ -120,7 +120,7 @@ func Build(config *BuildConfig) {
 		panic(err)
 	}
 
-	err = BuildImage(dockerCli, []string{dockertag}, ".", "Dockerfile")
+	err = BuildImage(dockerCli, []string{dockertag}, ".", "Dockerfile", defaultConfig.InfraUserKey)
 	if err != nil {
 		Logger.Error(err.Error())
 		panic(err)

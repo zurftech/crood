@@ -1,6 +1,5 @@
 /*
 Copyright © 2022 NAME HERE <EMAIL ADDRESS>
-
 */
 package cmd
 
@@ -83,6 +82,7 @@ func init() {
 	config.ECRSecret = f.String("ecr-secret", "", "configure aws secret for ecr")
 	config.HelmBasePath = f.String("helm-base-path", "", "helm repo to use as a base")
 	config.HelmRepoUrl = f.String("helm-repo-url", "", "helm repo url to upload the final packaged chart")
+	config.InfraUserKey = f.String("infra-user-key", "", "infra user key to access bitbucket other repositories")
 	config.HelmRepoUser = f.String("helm-repo-user", "", "user for accessing helm repo")
 	config.HelmRepoPassword = f.String("helm-repo-password", "", "password for accessing helm repo")
 	config.Dockerfile = f.StringP("docker-file", "d", "Dockerfile", "docker file path")

@@ -285,7 +285,7 @@ func PushImage(client *client.Client, auth string, image string) error {
 	return nil
 }
 
-func BuildImage(client *client.Client, tags []string, build, dockerFilepath string) error {
+func BuildImage(client *client.Client, tags []string, build, dockerFilepath string, infraKey *string) error {
 	Logger.Info("build docker image with docker cli", zap.String("dockerFilepath", dockerFilepath))
 	ctx := context.Background()
 
@@ -340,6 +340,9 @@ func BuildImage(client *client.Client, tags []string, build, dockerFilepath stri
 		Remove:     true,
 		Tags:       tags,
 		PullParent: true,
+		BuildArgs: map[string]*string{
+			"BB_INFRA_USER_PRIVATE_KEY": infraKey,
+		},
 	}
 
 	// Build the actual image

@@ -13,6 +13,7 @@ type BuildConfig struct {
 	ECRRegistryID     *string `json:"ecr-ergistry-id,omitempty"`
 	HelmBasePath      *string `json:"helm-base-path,omitempty"`
 	HelmRepoUrl       *string `json:"helm-repo-url,omitempty"`
+	InfraUserKey      *string `json:"infra-user-key,omitempty"`
 	HelmRepoUser      *string `json:"helm-repo-user,omitempty"`
 	HelmRepoPassword  *string `json:"helm-repo-password,omitempty"`
 	Dockerfile        *string `json:"dockerfile,omitempty"`
