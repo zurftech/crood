@@ -11,8 +11,13 @@ type BuildConfig struct {
 	ECRAccessKey      *string `json:"ecr-access-key,omitempty"`
 	ECRSecret         *string `json:"ecr-secret,omitempty"`
 	ECRRegistryID     *string `json:"ecr-ergistry-id,omitempty"`
+	FgECRRegion         *string `json:"fg-ecr-region,omitempty"`
+	FgECRAccessKey      *string `json:"fg-ecr-access-key,omitempty"`
+	FgECRSecret         *string `json:"fg-ecr-secret,omitempty"`
+	FgECRRegistryID     *string `json:"fg-ecr-ergistry-id,omitempty"`
 	HelmBasePath      *string `json:"helm-base-path,omitempty"`
 	HelmRepoUrl       *string `json:"helm-repo-url,omitempty"`
+	FgHelmRepoUrl       *string `json:"fg-helm-repo-url,omitempty"`
 	InfraUserKey      *string `json:"infra-user-key,omitempty"`
 	HelmRepoUser      *string `json:"helm-repo-user,omitempty"`
 	HelmRepoPassword  *string `json:"helm-repo-password,omitempty"`

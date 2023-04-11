@@ -80,13 +80,13 @@ func Build(config *BuildConfig) {
 	version := defaultConfig.Version
 	appname := defaultConfig.AppName
 
-	ecrSess, err := AwsSession(*defaultConfig.ECRRegion, *defaultConfig.ECRAccessKey, *defaultConfig.ECRSecret)
+	ecrSess, err := AwsSession(*defaultConfig.FgECRRegion, *defaultConfig.FgECRAccessKey, *defaultConfig.FgECRSecret)
 	if err != nil {
 		Logger.Error(err.Error())
 		panic(err)
 	}
 
-	repo, err := PrepareEcr(ecrSess, *defaultConfig.ECRRegistryID, appname)
+	repo, err := PrepareEcr(ecrSess, *defaultConfig.FgECRRegistryID, appname)
 	if err != nil {
 		Logger.Error(err.Error())
 		panic(err)
@@ -213,21 +213,21 @@ func Build(config *BuildConfig) {
 		panic(err)
 	}
 
-	err = HelmPush(*defaultConfig.HelmRepoUrl, *defaultConfig.HelmRepoUser, *defaultConfig.HelmRepoPassword, chartout)
+	err = HelmPush(*defaultConfig.FgHelmRepoUrl, *defaultConfig.HelmRepoUser, *defaultConfig.HelmRepoPassword, chartout)
 	if err != nil {
 		Logger.Error("unable to push the helm chart to repo", zap.Error(err))
 		panic(err)
 	}
 
 	if defaultConfig.OutputNotesPath != "" {
-		err = WriteBuildNotes(defaultConfig.OutputNotesPath, BuildNotes(appname, version, repoUrl, dockertag, *defaultConfig.HelmRepoUrl, appname, version))
+		err = WriteBuildNotes(defaultConfig.OutputNotesPath, BuildNotes(appname, version, repoUrl, dockertag, *defaultConfig.FgHelmRepoUrl, appname, version))
 		if err != nil {
 			Logger.Error("unable to write output notes to file", zap.String("file", defaultConfig.OutputNotesPath), zap.Error(err))
 			panic(err)
 		}
 	}
 
-	fmt.Printf(string(colorGreen)+finalOutputString+string(colorReset), appname, version, dockertag, *defaultConfig.HelmRepoUrl)
+	fmt.Printf(string(colorGreen)+finalOutputString+string(colorReset), appname, version, dockertag, *defaultConfig.FgHelmRepoUrl)
 }
 
 func worker(finished chan error, url, outputfile string) {
